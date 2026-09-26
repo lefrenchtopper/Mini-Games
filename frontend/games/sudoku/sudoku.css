@@ -1,0 +1,680 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(184, 131, 42, 0.08),
+            transparent 35%
+        ),
+        #11110f;
+
+    color: #f7f3ec;
+
+    font-family: Inter, Arial, sans-serif;
+}
+
+
+/* ==========================================
+   NAV
+========================================== */
+
+.game-nav {
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    background: rgba(17, 17, 15, 0.96);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 50;
+}
+
+.back-btn {
+    color: rgba(255,255,255,0.65);
+
+    text-decoration: none;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    color: #d4a84b;
+}
+
+.game-title {
+    font-family: Georgia, serif;
+
+    font-size: 0.85rem;
+
+    letter-spacing: 0.18em;
+
+    color: #d4a84b;
+}
+
+.nav-score {
+    font-size: 0.65rem;
+
+    letter-spacing: 0.1em;
+
+    color: rgba(255,255,255,0.4);
+}
+
+.nav-score span {
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   MAIN
+========================================== */
+
+.sudoku-container {
+    width: min(700px, 94%);
+
+    margin: auto;
+
+    padding: 45px 0 70px;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.game-header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+
+    font-size: 0.58rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.22em;
+
+    color: #d4a84b;
+}
+
+.game-header h1 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(2.4rem, 6vw, 4rem);
+
+    font-weight: 500;
+}
+
+.game-header h1 span {
+    color: #d4a84b;
+
+    font-style: italic;
+}
+
+.game-header p:last-child {
+    margin-top: 12px;
+
+    color: rgba(255,255,255,0.4);
+
+    font-size: 0.8rem;
+}
+
+
+/* ==========================================
+   INFO
+========================================== */
+
+.game-info {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.info-card {
+    min-width: 110px;
+
+    padding: 11px 18px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.025);
+
+    border: 1px solid rgba(255,255,255,0.09);
+}
+
+.info-card span {
+    display: block;
+
+    font-size: 0.48rem;
+
+    letter-spacing: 0.15em;
+
+    color: rgba(255,255,255,0.35);
+
+    margin-bottom: 4px;
+}
+
+.info-card strong {
+    font-family: Georgia, serif;
+
+    font-size: 1.2rem;
+
+    color: #d4a84b;
+}
+
+
+/* ==========================================
+   DIFFICULTY
+========================================== */
+
+.difficulty {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-bottom: 20px;
+}
+
+.difficulty-btn {
+    padding: 9px 18px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    background: transparent;
+
+    color: rgba(255,255,255,0.4);
+
+    font-size: 0.55rem;
+
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.difficulty-btn:hover,
+.difficulty-btn.active {
+    background: #b8832a;
+
+    border-color: #b8832a;
+
+    color: white;
+}
+
+
+/* ==========================================
+   BOARD
+========================================== */
+
+.sudoku-wrapper {
+    position: relative;
+
+    width: min(600px, 100%);
+
+    aspect-ratio: 1;
+
+    margin: auto;
+
+    background: #0c0c0b;
+
+    border: 2px solid #d4a84b;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.4);
+}
+
+.sudoku-board {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(9, 1fr);
+
+    grid-template-rows: repeat(9, 1fr);
+}
+
+
+/* ==========================================
+   CELLS
+========================================== */
+
+.sudoku-cell {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-right: 1px solid rgba(255,255,255,0.09);
+
+    border-bottom: 1px solid rgba(255,255,255,0.09);
+
+    color: #d4a84b;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(1rem, 4vw, 1.6rem);
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+
+/* Thick 3x3 borders */
+
+.sudoku-cell:nth-child(3n) {
+    border-right: 2px solid rgba(212,168,75,0.35);
+}
+
+.sudoku-cell:nth-child(9n) {
+    border-right: none;
+}
+
+.sudoku-cell:nth-child(n+19):nth-child(-n+27),
+.sudoku-cell:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 2px solid rgba(212,168,75,0.35);
+}
+
+
+/* Given cells */
+
+.sudoku-cell.given {
+    color: #f7f3ec;
+
+    font-weight: 700;
+
+    cursor: default;
+}
+
+
+/* User cells */
+
+.sudoku-cell.user {
+    color: #d4a84b;
+}
+
+
+/* Selected */
+
+.sudoku-cell.selected {
+    background: rgba(184,131,42,0.18);
+}
+
+
+/* Related */
+
+.sudoku-cell.related {
+    background: rgba(255,255,255,0.035);
+}
+
+
+/* Same number */
+
+.sudoku-cell.same-number {
+    background: rgba(212,168,75,0.12);
+}
+
+
+/* Wrong */
+
+.sudoku-cell.wrong {
+    color: #c0392b;
+
+    background: rgba(192,57,43,0.12);
+
+    animation: shake 0.25s ease;
+}
+
+@keyframes shake {
+
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+
+/* ==========================================
+   OVERLAY
+========================================== */
+
+.game-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(10,10,9,0.84);
+
+    backdrop-filter: blur(5px);
+
+    z-index: 10;
+}
+
+.game-overlay.hidden {
+    display: none;
+}
+
+.overlay-content {
+    text-align: center;
+
+    padding: 25px;
+}
+
+.overlay-icon {
+    font-family: Georgia, serif;
+
+    font-size: 2rem;
+
+    color: #d4a84b;
+
+    margin-bottom: 12px;
+}
+
+.overlay-content h2 {
+    margin: 0 0 10px;
+
+    font-family: Georgia, serif;
+
+    font-size: 2rem;
+
+    color: #d4a84b;
+}
+
+.overlay-content p {
+    margin: 0 0 25px;
+
+    max-width: 280px;
+
+    font-size: 0.7rem;
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,0.45);
+}
+
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.gold-button {
+    border: none;
+
+    padding: 13px 25px;
+
+    background: #b8832a;
+
+    color: white;
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.gold-button:hover {
+    background: #d4a84b;
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   NUMBER PAD
+========================================== */
+
+.number-pad {
+    display: grid;
+
+    grid-template-columns: repeat(10, 1fr);
+
+    gap: 5px;
+
+    margin: 18px auto 0;
+
+    width: min(600px, 100%);
+}
+
+.number-pad button {
+    aspect-ratio: 1;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    background: rgba(255,255,255,0.025);
+
+    color: rgba(255,255,255,0.75);
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.number-pad button:hover {
+    background: rgba(184,131,42,0.15);
+
+    border-color: #b8832a;
+
+    color: white;
+}
+
+.number-pad .erase {
+    color: #c0392b;
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 22px;
+
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    padding: 11px 18px;
+
+    border: 1px solid rgba(255,255,255,0.14);
+
+    background: transparent;
+
+    color: rgba(255,255,255,0.55);
+
+    text-decoration: none;
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.1em;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.control-btn:hover {
+    color: white;
+
+    border-color: #b8832a;
+}
+
+
+/* ==========================================
+   INSTRUCTIONS
+========================================== */
+
+.instructions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.instructions div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.instructions strong {
+    font-size: 0.52rem;
+
+    color: #d4a84b;
+
+    letter-spacing: 0.08em;
+}
+
+.instructions span {
+    font-size: 0.52rem;
+
+    color: rgba(255,255,255,0.3);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .game-title {
+        display: none;
+    }
+
+    .sudoku-container {
+        padding-top: 30px;
+    }
+
+    .game-info {
+        gap: 5px;
+    }
+
+    .info-card {
+        min-width: 85px;
+
+        padding: 9px 5px;
+    }
+
+    .number-pad {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .number-pad button {
+        aspect-ratio: 1.5;
+    }
+
+    .instructions {
+        display: none;
+    }
+}
+.back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 1000;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+
+    color: #fff;
+    text-decoration: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-3px);
+}

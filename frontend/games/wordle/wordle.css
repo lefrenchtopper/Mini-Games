@@ -1,0 +1,629 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(184, 131, 42, 0.08), transparent 35%),
+        #f7f3ec;
+    color: #1c1a14;
+    font-family: Inter, Arial, sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.game-header {
+    height: 72px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(247, 243, 236, 0.96);
+    border-bottom: 1px solid #e2ddd4;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-btn {
+    color: #6b6560;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    color: #b8832a;
+}
+
+.game-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #1c1a14;
+    color: #d4a84b;
+
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.game-title h1 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+}
+
+.game-title p {
+    margin: 3px 0 0;
+    color: #8b847c;
+    font-size: 0.62rem;
+}
+
+.header-btn {
+    border: 1px solid #d6d0c6;
+    background: white;
+    padding: 8px 14px;
+    border-radius: 5px;
+
+    font-size: 0.68rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.header-btn:hover {
+    background: #1c1a14;
+    color: white;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.wordle-container {
+    width: min(650px, 94%);
+    margin: 0 auto;
+    padding: 35px 0 60px;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.info-card {
+    min-width: 110px;
+    padding: 10px 18px;
+
+    background: white;
+    border: 1px solid #e2ddd4;
+    border-radius: 6px;
+
+    text-align: center;
+}
+
+.info-label {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #8b847c;
+
+    font-size: 0.57rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.info-card strong {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+}
+
+/* =========================
+   BOARD
+========================= */
+
+.wordle-board-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wordle-board {
+    display: grid;
+    grid-template-columns: repeat(5, 58px);
+    grid-template-rows: repeat(6, 58px);
+
+    gap: 7px;
+}
+
+.tile {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #d6d0c6;
+    border-radius: 5px;
+
+    background: white;
+
+    font-family: Georgia, serif;
+    font-size: 1.55rem;
+    font-weight: bold;
+
+    transition:
+        transform 0.15s,
+        background 0.3s,
+        border-color 0.3s;
+}
+
+.tile.filled {
+    border-color: #8f887f;
+    animation: pop 0.08s ease-out;
+}
+
+.tile.correct {
+    background: #4f7d52;
+    border-color: #4f7d52;
+    color: white;
+}
+
+.tile.present {
+    background: #b8832a;
+    border-color: #b8832a;
+    color: white;
+}
+
+.tile.absent {
+    background: #57534e;
+    border-color: #57534e;
+    color: white;
+}
+
+.tile.flip {
+    animation: flip 0.55s ease forwards;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0);
+    }
+
+    50% {
+        transform: rotateX(90deg);
+    }
+
+    100% {
+        transform: rotateX(0);
+    }
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    min-height: 34px;
+    margin-top: 14px;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+.message.error {
+    color: #c0392b;
+}
+
+.message.success {
+    color: #4f7d52;
+}
+
+/* =========================
+   KEYBOARD
+========================= */
+
+.keyboard {
+    width: 100%;
+    margin-top: 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.keyboard button {
+    height: 52px;
+    min-width: 42px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: #d8d4cd;
+    color: #1c1a14;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s,
+        background 0.2s;
+}
+
+.keyboard button:hover {
+    background: #c5c0b8;
+}
+
+.keyboard button:active {
+    transform: scale(0.94);
+}
+
+.keyboard button.correct {
+    background: #4f7d52;
+    color: white;
+}
+
+.keyboard button.present {
+    background: #b8832a;
+    color: white;
+}
+
+.keyboard button.absent {
+    background: #57534e;
+    color: white;
+}
+
+.keyboard .wide-key {
+    min-width: 70px;
+    font-size: 0.62rem;
+}
+
+/* =========================
+   INSTRUCTIONS
+========================= */
+
+.instructions {
+    margin-top: 40px;
+    padding-top: 25px;
+
+    border-top: 1px solid #e2ddd4;
+}
+
+.instructions h2 {
+    margin: 0 0 15px;
+
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    text-align: center;
+}
+
+.rules {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.rule {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #6b6560;
+    font-size: 0.65rem;
+}
+
+.rule-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+}
+
+.rule-box.correct {
+    background: #4f7d52;
+}
+
+.rule-box.present {
+    background: #b8832a;
+}
+
+.rule-box.absent {
+    background: #57534e;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(20, 18, 14, 0.72);
+
+    z-index: 500;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-card {
+    width: min(380px, 90%);
+    padding: 35px;
+
+    background: #fff;
+    border-radius: 10px;
+
+    text-align: center;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+
+    animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.result-icon {
+    font-size: 2.7rem;
+    margin-bottom: 12px;
+}
+
+.modal-card h2 {
+    margin: 0 0 8px;
+
+    font-family: Georgia, serif;
+    font-size: 1.8rem;
+}
+
+.modal-card p {
+    color: #6b6560;
+    font-size: 0.78rem;
+    line-height: 1.6;
+}
+
+.result-score {
+    margin: 20px 0;
+
+    padding: 15px;
+
+    background: #f7f3ec;
+    border-radius: 6px;
+}
+
+.result-score span {
+    display: block;
+
+    color: #8b847c;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.result-score strong {
+    display: block;
+    margin-top: 4px;
+
+    font-family: Georgia, serif;
+    font-size: 1.7rem;
+}
+
+.play-again-btn {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: #1c1a14;
+    color: white;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.play-again-btn:hover {
+    background: #3d4a2a;
+}
+
+.dashboard-link {
+    display: block;
+    margin-top: 14px;
+
+    color: #8b847c;
+
+    font-size: 0.65rem;
+    text-decoration: none;
+}
+
+.dashboard-link:hover {
+    color: #b8832a;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .game-header {
+        height: 64px;
+        padding: 0 15px;
+    }
+
+    .game-title {
+        gap: 7px;
+    }
+
+    .title-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .game-title h1 {
+        font-size: 0.8rem;
+    }
+
+    .game-title p {
+        display: none;
+    }
+
+    .header-btn {
+        padding: 7px 9px;
+        font-size: 0.58rem;
+    }
+
+    .wordle-container {
+        padding-top: 25px;
+    }
+
+    .game-info {
+        gap: 7px;
+    }
+
+    .info-card {
+        min-width: 85px;
+        padding: 8px;
+    }
+
+    .wordle-board {
+        grid-template-columns: repeat(5, 52px);
+        grid-template-rows: repeat(6, 52px);
+        gap: 5px;
+    }
+
+    .tile {
+        width: 52px;
+        height: 52px;
+        font-size: 1.3rem;
+    }
+
+    .keyboard {
+        margin-top: 20px;
+    }
+
+    .keyboard-row {
+        gap: 3px;
+    }
+
+    .keyboard button {
+        min-width: 30px;
+        height: 47px;
+        font-size: 0.65rem;
+    }
+
+    .keyboard .wide-key {
+        min-width: 52px;
+        font-size: 0.5rem;
+    }
+
+    .rules {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 1000;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+
+    color: #fff;
+    text-decoration: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-3px);
+}

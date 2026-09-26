@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2048 | MiniHub</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="2048.css">
+</head>
+<body>
+  <header class="game-nav"><a class="back-btn" href="../../index.html">&larr; MiniHub</a><strong>2048</strong><span>SCORE <b id="topScore">0</b></span></header>
+  <main class="game-page">
+    <section class="game-header"><div><p class="eyebrow">PUZZLE · SLIDE · MERGE</p><h1>2048</h1><p>Join the tiles. Chase the impossible number.</p></div><div class="score-panel"><span>BEST</span><strong id="bestScore">0</strong></div></section>
+    <section class="stats"><div><span>SCORE</span><strong id="score">0</strong></div><div><span>TILES</span><strong id="maxTile">2</strong></div></section>
+    <div class="board-wrap"><div id="board" class="board" role="grid" aria-label="2048 board"></div><div id="overlay" class="overlay hidden"><h2 id="overlayTitle">Game over</h2><p id="overlayText">No more moves.</p><button id="restartButton" class="primary-btn">PLAY AGAIN</button></div></div>
+    <div class="controls"><button id="newButton" class="control-btn">NEW GAME</button><a class="control-btn secondary" href="../../pages/dashboard.html">BACK TO ARCADE</a></div>
+    <p class="hint">Use arrow keys or swipe the board to move tiles.</p>
+  </main>
+  <script src="../../js/api.js"></script>
+  <script src="2048.js"></script>
+</body>
+</html>

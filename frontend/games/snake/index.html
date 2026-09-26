@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Snake | MiniHub</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="snake.css">
+</head>
+
+
+<body>
+    <a href="../../index.html" class="back-btn">← MiniHub</a>
+
+    
+<header class="game-nav">
+
+    <a href="../../pages/dashboard.html" class="back-btn">
+        ← MiniHub
+    </a>
+
+    <div class="game-title">
+        SNAKE
+    </div>
+
+    <div class="nav-score">
+        SCORE: <span id="topScore">0</span>
+    </div>
+
+</header>
+
+
+<main class="snake-container">
+
+    <section class="game-header">
+
+        <p class="eyebrow">
+            MINIHUB · ARCADE
+        </p>
+
+        <h1>
+            Snake <span>Classic</span>
+        </h1>
+
+        <p>
+            Eat. Grow. Survive.
+        </p>
+
+    </section>
+
+
+    <section class="score-panel">
+
+        <div class="score-card">
+            <span>SCORE</span>
+            <strong id="score">0</strong>
+        </div>
+
+        <div class="score-card">
+            <span>BEST</span>
+            <strong id="bestScore">0</strong>
+        </div>
+
+        <div class="score-card">
+            <span>LENGTH</span>
+            <strong id="length">1</strong>
+        </div>
+
+    </section>
+
+
+    <section class="game-wrapper">
+
+        <div class="canvas-container">
+
+            <canvas
+                id="gameCanvas"
+                width="600"
+                height="600">
+            </canvas>
+
+            <div id="gameOverlay" class="game-overlay">
+
+                <div class="overlay-content">
+
+                    <div class="overlay-icon">
+                        🐍
+                    </div>
+
+                    <h2 id="overlayTitle">
+                        SNAKE
+                    </h2>
+
+                    <p id="overlayMessage">
+                        Use the arrow keys to move.
+                    </p>
+
+                    <button
+                        id="startButton"
+                        class="gold-button"
+                        onclick="startGame()">
+                        START GAME
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="mobile-controls">
+
+        <button onclick="changeDirection('UP')">
+            ↑
+        </button>
+
+        <div>
+
+            <button onclick="changeDirection('LEFT')">
+                ←
+            </button>
+
+            <button onclick="changeDirection('DOWN')">
+                ↓
+            </button>
+
+            <button onclick="changeDirection('RIGHT')">
+                →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="controls">
+
+        <button
+            class="control-btn"
+            onclick="resetGame()">
+            ↻ RESET
+        </button>
+
+        <a
+            href="../../pages/dashboard.html"
+            class="control-btn secondary">
+            ← BACK TO ARCADE
+        </a>
+
+    </section>
+
+
+    <section class="instructions">
+
+        <div>
+            <strong>↑ ↓ ← →</strong>
+            <span>Move</span>
+        </div>
+
+        <div>
+            <strong>SPACE</strong>
+            <span>Pause</span>
+        </div>
+
+        <div>
+            <strong>ESC</strong>
+            <span>Reset</span>
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="../../js/api.js"></script>
+<script src="../../js/app.js"></script>
+<script src="snake.js"></script>
+
+</body>
+</html>

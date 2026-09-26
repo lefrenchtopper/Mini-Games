@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rock Paper Scissors | MiniHub</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="rps.css">
+</head>
+
+<body>
+    <a href="../../index.html" class="back-btn">← MiniHub</a>
+
+    <header class="game-nav">
+        <a href="../../pages/dashboard.html" class="back-btn">
+            ← MiniHub
+        </a>
+
+        <div class="game-title">
+            ROCK PAPER SCISSORS
+        </div>
+
+        <div class="nav-score">
+            Score: <span id="score">0</span>
+        </div>
+    </header>
+
+    <main class="rps-container">
+
+        <section class="game-header">
+            <p class="eyebrow">MINIHUB · ARCADE</p>
+
+            <h1>
+                Rock <span>Paper</span> Scissors
+            </h1>
+
+            <p>
+                Choose your weapon. Beat the computer.
+            </p>
+        </section>
+
+        <section class="scoreboard">
+
+            <div class="score-box">
+                <span>YOU</span>
+                <strong id="playerScore">0</strong>
+            </div>
+
+            <div class="vs">
+                VS
+            </div>
+
+            <div class="score-box">
+                <span>COMPUTER</span>
+                <strong id="computerScore">0</strong>
+            </div>
+
+        </section>
+
+        <section class="battle">
+
+            <div class="fighter">
+                <div class="fighter-label">YOUR CHOICE</div>
+
+                <div class="choice-display" id="playerChoice">
+                    ?
+                </div>
+            </div>
+
+            <div class="result-area">
+
+                <div id="result" class="result">
+                    Make your move
+                </div>
+
+                <div id="roundMessage" class="round-message">
+                    Choose Rock, Paper or Scissors
+                </div>
+
+            </div>
+
+            <div class="fighter">
+                <div class="fighter-label">COMPUTER</div>
+
+                <div class="choice-display" id="computerChoice">
+                    ?
+                </div>
+            </div>
+
+        </section>
+
+        <section class="choices">
+
+            <button class="choice-btn rock" onclick="play('rock')">
+                <span class="choice-icon">✊</span>
+                <span class="choice-name">ROCK</span>
+            </button>
+
+            <button class="choice-btn paper" onclick="play('paper')">
+                <span class="choice-icon">✋</span>
+                <span class="choice-name">PAPER</span>
+            </button>
+
+            <button class="choice-btn scissors" onclick="play('scissors')">
+                <span class="choice-icon">✌️</span>
+                <span class="choice-name">SCISSORS</span>
+            </button>
+
+        </section>
+
+        <section class="controls">
+
+            <button onclick="resetGame()" class="control-btn">
+                ↻ RESET GAME
+            </button>
+
+            <a href="../../pages/dashboard.html" class="control-btn secondary">
+                ← BACK TO ARCADE
+            </a>
+
+        </section>
+
+    </main>
+
+    <script src="../../js/api.js"></script>
+    <script src="rps.js"></script>
+
+</body>
+</html>

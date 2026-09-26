@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniHub | Dino</title>
+    <link rel="stylesheet" href="dino.css">
+</head>
+<body>
+    <a href="../../index.html" class="back-btn">← MiniHub</a>
+
+<header class="game-header">
+    <div class="brand">
+        <span class="brand-mark">M</span>
+        <div>
+            <h1>MINIHUB</h1>
+            <p>ARCADE</p>
+        </div>
+    </div>
+
+    <a href="../../index.html" class="back-btn">← MINIHUB</a>
+</header>
+
+<main class="game-page">
+
+    <section class="game-intro">
+        <div>
+            <span class="eyebrow">ENDLESS RUNNER</span>
+            <h2>DINO</h2>
+            <p>
+                Jump over obstacles, survive as long as possible,
+                and push your high score further.
+            </p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <span>SCORE</span>
+                <strong id="score">0</strong>
+            </div>
+
+            <div class="stat">
+                <span>HIGH SCORE</span>
+                <strong id="highScore">0</strong>
+            </div>
+
+            <div class="stat">
+                <span>SPEED</span>
+                <strong id="speed">1x</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="arcade">
+
+        <div class="game-container">
+
+            <canvas id="gameCanvas" width="1000" height="420"></canvas>
+
+            <div class="overlay" id="startOverlay">
+                <div class="overlay-card">
+                    <span class="overlay-label">MINIHUB ARCADE</span>
+
+                    <h3>DINO</h3>
+
+                    <p>
+                        Press SPACE, ↑ or click to jump.
+                        Avoid the cacti and survive.
+                    </p>
+
+                    <button id="startBtn">
+                        START GAME
+                    </button>
+                </div>
+            </div>
+
+            <div class="overlay hidden" id="gameOverOverlay">
+                <div class="overlay-card">
+
+                    <span class="overlay-label">RUN ENDED</span>
+
+                    <h3>GAME OVER</h3>
+
+                    <div class="final-score">
+                        <span>FINAL SCORE</span>
+                        <strong id="finalScore">0</strong>
+                    </div>
+
+                    <button id="restartBtn">
+                        RUN AGAIN
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="controls">
+
+            <div>
+                <span class="control-title">CONTROLS</span>
+                <p>SPACE / ↑ &nbsp; Jump</p>
+                <p>Mouse / Touch &nbsp; Jump</p>
+            </div>
+
+            <div>
+                <span class="control-title">OBJECTIVE</span>
+                <p>Jump over the cacti.</p>
+                <p>Survive and beat your record.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="../../js/api.js"></script>
+<script src="dino.js"></script>
+
+</body>
+</html>

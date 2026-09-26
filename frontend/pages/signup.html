@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>MiniHub | Sign Up</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+  </head>
+  <body>
+    <nav>
+      <a class="logo" href="../index.html"
+        ><span class="logo-icon">🎮</span
+        ><span><b>MINIHUB</b><small>ARCADE & MORE</small></span></a
+      >
+      <div class="nav-links">
+        <a href="../index.html">Home</a
+        ><a href="leaderboard.html">Leaderboard</a
+        ><a href="profile.html">Profile</a>
+      </div>
+      <div class="nav-auth">
+        <a href="login.html" class="login-btn">Sign In</a
+        ><a href="signup.html" class="signup-btn">Sign Up</a>
+      </div>
+    </nav>
+    <main class="auth-page">
+      <div class="auth-card">
+        <div class="section-label">JOIN THE ARCADE</div>
+        <h1>Create account</h1>
+        <p>Make a profile and start climbing the rankings.</p>
+        <form onsubmit="signup(event)">
+          <div class="field">
+            <label>USERNAME</label
+            ><input id="username" required minlength="3" />
+          </div>
+
+
+          
+          <div class="field">
+            <label>EMAIL</label><input id="email" type="email" required />
+          </div>
+          <div class="field">
+            <label>PASSWORD</label
+            ><input id="password" type="password" required minlength="6" />
+          </div>
+          <button class="primary-btn" type="submit">Create Account</button>
+        </form>
+        <div class="auth-link">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+        <p id="authStatus" role="status" aria-live="polite"></p>
+      </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+
+    <script>
+      async function signup(e) {
+        e.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        
+        try {
+          const result = await signupUser(username, email, password);
+
+          if (result.session) {
+            window.location.href = "dashboard.html";
+          } else {
+            const status = document.getElementById("authStatus");
+            status.textContent = "Account created successfully! Please check your email for the confirmation link before logging in.";
+            status.classList.add("success");
+          }
+        } catch (error) {
+          console.error("Signup error:", error);
+          alert(error.message);
+        }
+      }
+    </script>
+  </body>
+</html>

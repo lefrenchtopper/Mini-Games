@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QR Generator | MiniHub</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="qr.css">
+</head>
+
+<body>
+    <a href="../../index.html" class="back-btn">← MiniHub</a>
+
+<header class="tool-header">
+
+    <a href="../../pages/dashboard.html" class="back-btn">
+        ← Dashboard
+    </a>
+
+    <div class="tool-title">
+        <div class="tool-icon">▦</div>
+
+        <div>
+            <h1>QR GENERATOR</h1>
+            <p>Create QR codes instantly</p>
+        </div>
+    </div>
+
+    <button id="clearBtn" class="header-btn">
+        Clear
+    </button>
+
+</header>
+
+
+<main class="qr-container">
+
+    <section class="qr-intro">
+
+        <span class="eyebrow">
+            MINI TOOL
+        </span>
+
+        <h2>
+            Turn anything into a
+            <em>QR code.</em>
+        </h2>
+
+        <p>
+            Generate a QR code for a website, text,
+            contact information, Wi-Fi network or anything
+            else you want to share.
+        </p>
+
+    </section>
+
+
+    <section class="qr-layout">
+
+        <!-- INPUT -->
+
+        <div class="qr-card input-card">
+
+            <div class="card-heading">
+                <span>01</span>
+                <h3>Your content</h3>
+            </div>
+
+            <label for="qrText">
+                Text or URL
+            </label>
+
+            <textarea
+                id="qrText"
+                placeholder="https://example.com"
+                maxlength="1000"
+            ></textarea>
+
+            <div class="character-count">
+                <span id="charCount">0</span> / 1000
+            </div>
+
+
+            <label for="qrSize">
+                QR Size
+            </label>
+
+            <select id="qrSize">
+
+                <option value="200">
+                    Small — 200 × 200
+                </option>
+
+                <option value="300" selected>
+                    Medium — 300 × 300
+                </option>
+
+                <option value="400">
+                    Large — 400 × 400
+                </option>
+
+                <option value="500">
+                    Extra Large — 500 × 500
+                </option>
+
+            </select>
+
+
+            <div class="quick-options">
+
+                <button data-text="https://www.google.com">
+                    Google
+                </button>
+
+                <button data-text="https://github.com">
+                    GitHub
+                </button>
+
+                <button data-text="Hello from MiniHub!">
+                    Text
+                </button>
+
+            </div>
+
+
+            <button id="generateBtn" class="generate-btn">
+                Generate QR Code
+            </button>
+
+        </div>
+
+
+        <!-- OUTPUT -->
+
+        <div class="qr-card output-card">
+
+            <div class="card-heading">
+                <span>02</span>
+                <h3>Your QR code</h3>
+            </div>
+
+            <div id="qrPreview" class="qr-preview">
+
+                <div class="empty-qr">
+
+                    <div class="empty-icon">
+                        ▦
+                    </div>
+
+                    <h3>Your QR code will appear here</h3>
+
+                    <p>
+                        Enter some content and click
+                        Generate QR Code.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="qr-actions">
+
+                <button
+                    id="downloadBtn"
+                    class="download-btn"
+                    disabled
+                >
+                    Download PNG
+                </button>
+
+                <button
+                    id="copyBtn"
+                    class="copy-btn"
+                    disabled
+                >
+                    Copy
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="qr-tips">
+
+        <div>
+            <strong>01</strong>
+            <span>Paste a URL or text</span>
+        </div>
+
+        <div>
+            <strong>02</strong>
+            <span>Generate your QR code</span>
+        </div>
+
+        <div>
+            <strong>03</strong>
+            <span>Download and share</span>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- QR LIBRARY -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="qr.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿# Environment and secrets
+Backend/.env
+.env
+
+# Python virtual environments and caches
+venv/
+Backend/venv/
+__pycache__/
+Backend/__pycache__/
+.pytest_cache/
+Backend/.pytest_cache/
+
+# Node and OS files
+node_modules/
+.DS_Store
+Thumbs.db

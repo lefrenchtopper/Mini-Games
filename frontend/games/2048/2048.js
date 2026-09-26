@@ -1,0 +1,21 @@
+const boardElement = document.getElementById('board');
+const scoreElement = document.getElementById('score');
+const topScoreElement = document.getElementById('topScore');
+const bestElement = document.getElementById('bestScore');
+const maxTileElement = document.getElementById('maxTile');
+const overlay = document.getElementById('overlay');
+const overlayTitle = document.getElementById('overlayTitle');
+const overlayText = document.getElementById('overlayText');
+let board = [];
+let score = 0;
+let best = Number(localStorage.getItem('minihub-2048-best') || 0);
+
+function startGame() { board = Array.from({ length: 16 }, () => 0); score = 0; overlay.classList.add('hidden'); addTile(); addTile(); render(); }
+function addTile() { const empty = board.map((value, index) => value ? -1 : index).filter(index => index >= 0); if (!empty.length) return; board[empty[Math.floor(Math.random() * empty.length)]] = Math.random() < .9 ? 2 : 4; }
+function slideLine(line) { const compact = line.filter(Boolean); const result = []; for (let index = 0; index < compact.length; index += 1) { if (compact[index] === compact[index + 1]) { const merged = compact[index] * 2; result.push(merged); score += merged; index += 1; } else result.push(compact[index]); } while (result.length < 4) result.push(0); return result; }
+function move(direction) { const previous = board.join(','); const next = Array.from({ length: 16 }, () => 0); for (let row = 0; row < 4; row += 1) { for (let column = 0; column < 4; column += 1) { const source = direction === 'left' ? row * 4 + column : direction === 'right' ? row * 4 + 3 - column : direction === 'up' ? column * 4 + row : (3 - column) * 4 + row; const target = direction === 'left' || direction === 'right' ? row * 4 + column : column * 4 + row; next[target] = board[source]; } const line = next.slice(row * 4, row * 4 + 4); const moved = slideLine(direction === 'right' || direction === 'down' ? line.reverse() : line); const output = direction === 'right' || direction === 'down' ? moved.reverse() : moved; for (let column = 0; column < 4; column += 1) next[row * 4 + column] = output[column]; } if (direction === 'up' || direction === 'down') { const rotated = Array.from({ length: 16 }, () => 0); for (let row = 0; row < 4; row += 1) for (let column = 0; column < 4; column += 1) rotated[column * 4 + row] = next[row * 4 + column]; board = rotated; } else board = next; if (previous === board.join(',')) return; addTile(); render(); if (!canMove()) finish(false); }
+function canMove() { return board.some((value, index) => !value || (index % 4 < 3 && value === board[index + 1]) || (index < 12 && value === board[index + 4])); }
+function finish(won) { API.saveScore('2048', score); overlayTitle.textContent = won ? '2048 reached' : 'No more moves'; overlayText.textContent = won ? 'Beautiful work. Keep going or start fresh.' : `Final score: ${score}`; overlay.classList.remove('hidden'); }
+function render() { boardElement.innerHTML = ''; board.forEach(value => { const tile = document.createElement('div'); tile.className = `tile ${value ? `v${value}` : ''}`; tile.textContent = value || ''; tile.setAttribute('role', 'gridcell'); boardElement.appendChild(tile); }); scoreElement.textContent = score; topScoreElement.textContent = score; best = Math.max(best, score); localStorage.setItem('minihub-2048-best', best); bestElement.textContent = best; maxTileElement.textContent = Math.max(...board); }
+document.addEventListener('keydown', event => { const directions = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' }; if (directions[event.key]) { event.preventDefault(); move(directions[event.key]); } });
+document.getElementById('newButton').addEventListener('click', startGame); document.getElementById('restartButton').addEventListener('click', startGame); let touchStart = null; boardElement.addEventListener('touchstart', event => { touchStart = event.changedTouches[0]; }, { passive: true }); boardElement.addEventListener('touchend', event => { if (!touchStart) return; const touch = event.changedTouches[0]; const dx = touch.clientX - touchStart.clientX; const dy = touch.clientY - touchStart.clientY; if (Math.max(Math.abs(dx), Math.abs(dy)) > 24) move(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up')); touchStart = null; }, { passive: true }); startGame();

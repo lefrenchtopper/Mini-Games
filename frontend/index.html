@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiniHub | Arcade & More</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav>
+<a class="logo" href="index.html"><span class="logo-icon">🎮</span><span><b>MINIHUB</b><small>ARCADE & MORE</small></span></a>
+<div class="nav-links"><a href="index.html">Home</a><a href="pages/leaderboard.html">Leaderboard</a><a href="pages/profile.html">Profile</a></div>
+<div class="nav-auth"><a href="pages/login.html" class="login-btn">Sign In</a><a href="pages/signup.html" class="signup-btn">Sign Up</a></div>
+</nav>
+<main>
+<section class="hero">
+<div class="hero-content">
+<div class="eyebrow">WELCOME TO MINIHUB</div>
+<h1>PLAY.<span> COMPETE.</span><br>DOMINATE.</h1>
+<p>A collection of classic games, puzzles and useful tools. Play, track your scores and compete on the global leaderboard.</p>
+<div class="hero-buttons"><a href="#games" class="primary-btn">Explore Games</a><a href="pages/leaderboard.html" class="secondary-btn">View Leaderboard</a></div>
+<div class="hero-stats"><div><strong>12</strong><small>Games & Tools</small></div><div><strong>∞</strong><small>Scores to Chase</small></div><div><strong>1</strong><small>Global Arcade</small></div></div>
+</div>
+<div class="hero-visual"><div class="arcade-card"><div class="arcade-screen"><div class="pixel-title">MINIHUB</div><div class="pixel-score">HIGH SCORE</div><div class="pixel-number">99999</div><div class="pixel-start">PRESS START</div></div></div></div>
+</section>
+<section id="games" class="games-section">
+<div class="section-heading"><div><div class="section-label">THE ARCADE</div><h2>Choose your game.</h2></div><p>Pick a game and see how high you can push your score.</p></div>
+<div class="game-grid">
+<a href="games/snake/index.html" class="game-card"><div class="game-icon">🐍</div><div class="game-info"><span>ARCADE</span><h3>Snake</h3><p>Eat. Grow. Survive.</p></div><b>→</b></a>
+<a href="games/breakout/index.html" class="game-card"><div class="game-icon">🧱</div><div class="game-info"><span>ARCADE</span><h3>Breakout</h3><p>Break every block.</p></div><b>→</b></a>
+<a href="games/dino/index.html" class="game-card"><div class="game-icon">🦖</div><div class="game-info"><span>ENDLESS</span><h3>Dino Run</h3><p>How long can you survive?</p></div><b>→</b></a>
+<a href="games/rps/index.html" class="game-card"><div class="game-icon">✊</div><div class="game-info"><span>CLASSIC</span><h3>Rock Paper Scissors</h3><p>Beat the computer.</p></div><b>→</b></a>
+<a href="games/wordle/index.html" class="game-card"><div class="game-icon">🔤</div><div class="game-info"><span>PUZZLE</span><h3>Wordle</h3><p>Guess the hidden word.</p></div><b>→</b></a>
+<a href="games/sudoku/index.html" class="game-card"><div class="game-icon">🔢</div><div class="game-info"><span>PUZZLE</span><h3>Sudoku</h3><p>Test your logic.</p></div><b>→</b></a>
+<a href="games/tictactoe/index.html" class="game-card"><div class="game-icon">❌</div><div class="game-info"><span>CLASSIC</span><h3>Tic Tac Toe</h3><p>Three in a row.</p></div><b>→</b></a>
+<a href="games/graphing/index.html" class="game-card"><div class="game-icon">📈</div><div class="game-info"><span>TOOL</span><h3>Graphing Calculator</h3><p>Plot equations.</p></div><b>→</b></a>
+<a href="games/qr/index.html" class="game-card"><div class="game-icon">▦</div><div class="game-info"><span>TOOL</span><h3>QR Generator</h3><p>Create QR codes.</p></div><b>→</b></a>
+<a href="games/2048/index.html" class="game-card"><div class="game-icon">2048</div><div class="game-info"><span>PUZZLE</span><h3>2048</h3><p>Slide tiles. Merge up.</p></div><b>→</b></a>
+<a href="games/minesweeper/index.html" class="game-card"><div class="game-icon">✹</div><div class="game-info"><span>LOGIC</span><h3>Minesweeper</h3><p>Clear the field.</p></div><b>→</b></a>
+<a href="games/reaction/index.html" class="game-card"><div class="game-icon">⚡</div><div class="game-info"><span>REFLEX</span><h3>Reaction Test</h3><p>Beat your response time.</p></div><b>→</b></a>
+
+</div> 
+</section>
+<section class="leaderboard-preview">
+<div><div class="section-label">GLOBAL COMPETITION</div><h2>Think you can make the leaderboard?</h2><p>Every game can contribute to your MiniHub profile and global rankings.</p><a href="pages/leaderboard.html" class="primary-btn">View Leaderboard</a></div>
+<div class="leaderboard-card"><div class="lb-header"><span>PLAYER</span><span>SCORE</span></div><div class="lb-row"><span>🏆 PixelMaster</span><strong>12,840</strong></div><div class="lb-row"><span>⚡ CodeNinja</span><strong>10,492</strong></div><div class="lb-row"><span>🔥 GameLord</span><strong>9,821</strong></div></div>
+</section>
+</main>
+<footer><span>© 2026 MiniHub</span><span>Play. Compete. Improve.</span></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

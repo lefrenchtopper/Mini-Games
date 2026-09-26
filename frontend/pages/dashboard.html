@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniHub — Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+<nav class="top-nav">
+    <div class="nav-brand" onclick="goHome()">
+        <div class="brand-icon">M</div>
+        <div>
+            <div class="brand-name">MINIHUB</div>
+            <div class="brand-sub">ARCADE & TOOLS</div>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="profile.html">Profile</a>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+</nav>
+
+<main class="dashboard">
+
+    <!-- HERO -->
+
+    <section class="dashboard-hero">
+
+        <div>
+            <p class="eyebrow">WELCOME BACK</p>
+
+            <h1>
+                Ready to
+                <span>play?</span>
+            </h1>
+
+            <p class="hero-description">
+                Pick a game, challenge yourself, and climb the global leaderboard.
+            </p>
+
+            <button class="primary-btn" onclick="scrollToGames()">
+                EXPLORE GAMES →
+            </button>
+        </div>
+
+        <div class="hero-decoration">
+            <div class="floating-card card-one">🎮</div>
+            <div class="floating-card card-two">🏆</div>
+            <div class="floating-card card-three">⚡</div>
+            <div class="hero-circle">M</div>
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">🎮</div>
+            <div>
+                <div class="stat-number" id="gamesPlayed">0</div>
+                <div class="stat-label">Games Played</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div>
+                <div class="stat-number" id="totalScore">0</div>
+                <div class="stat-label">Total Score</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div>
+                <div class="stat-number" id="bestScore">0</div>
+                <div class="stat-label">Best Score</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div>
+                <div class="stat-number" id="gamesUnlocked">9</div>
+                <div class="stat-label">Games Available</div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- RECENT -->
+
+    <section class="section-block">
+
+        <div class="section-heading">
+            <div>
+                <p class="section-label">YOUR ACTIVITY</p>
+                <h2>Recently Played</h2>
+            </div>
+        </div>
+
+        <div id="recentGames" class="recent-games">
+            <div class="empty-state">
+                <span>🎮</span>
+                <p>You haven't played anything yet.</p>
+                <button onclick="scrollToGames()">Play your first game →</button>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- GAMES -->
+
+    <section class="section-block" id="games-section">
+
+        <div class="section-heading">
+            <div>
+                <p class="section-label">THE ARCADE</p>
+                <h2>Choose Your Game</h2>
+            </div>
+
+            <span class="game-count">12 GAMES</span>
+        </div>
+
+
+        <div class="games-grid">
+
+            <!-- SNAKE -->
+
+            <div class="game-card" onclick="openGame('snake')">
+
+                <div class="game-card-top snake-bg">
+                    <span class="game-number">01</span>
+                    <span class="game-icon">🐍</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Snake</h3>
+                    <p>Grow longer. Survive longer.</p>
+
+                    <div class="game-card-footer">
+                        <span>BEST <strong id="best-snake">0</strong></span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- BREAKOUT -->
+
+            <div class="game-card" onclick="openGame('breakout')">
+
+                <div class="game-card-top breakout-bg">
+                    <span class="game-number">02</span>
+                    <span class="game-icon">🧱</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Breakout</h3>
+                    <p>Break every brick. Chase the high score.</p>
+
+                    <div class="game-card-footer">
+                        <span>BEST <strong id="best-breakout">0</strong></span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DINO -->
+
+            <div class="game-card" onclick="openGame('dino')">
+
+                <div class="game-card-top dino-bg">
+                    <span class="game-number">03</span>
+                    <span class="game-icon">🦖</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Dino Run</h3>
+                    <p>Jump. Dodge. Don't stop running.</p>
+
+                    <div class="game-card-footer">
+                        <span>BEST <strong id="best-dino">0</strong></span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- RPS -->
+
+            <div class="game-card" onclick="openGame('rps')">
+
+                <div class="game-card-top rps-bg">
+                    <span class="game-number">04</span>
+                    <span class="game-icon">✊</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Rock Paper Scissors</h3>
+                    <p>Choose wisely. Beat the computer.</p>
+
+                    <div class="game-card-footer">
+                        <span>BEST <strong id="best-rps">0</strong></span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- WORDLE -->
+
+            <div class="game-card" onclick="openGame('wordle')">
+
+                <div class="game-card-top wordle-bg">
+                    <span class="game-number">05</span>
+                    <span class="game-icon">🔤</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Wordle</h3>
+                    <p>Find the hidden word in six tries.</p>
+
+                    <div class="game-card-footer">
+                        <span>BEST <strong id="best-wordle">0</strong></span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- SUDOKU -->
+
+            <div class="game-card" onclick="openGame('sudoku')">
+
+                <div class="game-card-top sudoku-bg">
+                    <span class="game-number">06</span>
+                    <span class="game-icon">🔢</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Sudoku</h3>
+                    <p>Logic, numbers and concentration.</p>
+
+                    <div class="game-card-footer">
+                        <span>BEST <strong id="best-sudoku">0</strong></span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- TIC TAC TOE -->
+
+            <div class="game-card" onclick="openGame('tictactoe')">
+
+                <div class="game-card-top ttt-bg">
+                    <span class="game-number">07</span>
+                    <span class="game-icon">⭕</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Tic-Tac-Toe</h3>
+                    <p>Classic strategy. Three in a row.</p>
+
+                    <div class="game-card-footer">
+                        <span>BEST <strong id="best-tictactoe">0</strong></span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- GRAPHING -->
+
+            <div class="game-card" onclick="openGame('graphing')">
+
+                <div class="game-card-top graphing-bg">
+                    <span class="game-number">08</span>
+                    <span class="game-icon">📈</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Graphing Calculator</h3>
+                    <p>Plot functions and explore mathematics.</p>
+
+                    <div class="game-card-footer">
+                        <span>TOOL</span>
+                        <button>OPEN →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- QR -->
+
+            <div class="game-card" onclick="openGame('qr')">
+
+                <div class="game-card-top qr-bg">
+                    <span class="game-number">09</span>
+                    <span class="game-icon">▦</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>QR Generator</h3>
+                    <p>Create QR codes instantly.</p>
+
+                    <div class="game-card-footer">
+                        <span>TOOL</span>
+                        <button>OPEN →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- 2048 -->
+
+            <div class="game-card" onclick="openGame('2048')">
+
+                <div class="game-card-top graphing-bg">
+                    <span class="game-number">10</span>
+                    <span class="game-icon">2048</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>2048</h3>
+                    <p>Slide tiles and chase the big number.</p>
+
+                    <div class="game-card-footer">
+                        <span>PUZZLE</span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- MINESWEEPER -->
+
+            <div class="game-card" onclick="openGame('minesweeper')">
+
+                <div class="game-card-top snake-bg">
+                    <span class="game-number">11</span>
+                    <span class="game-icon">✹</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Minesweeper</h3>
+                    <p>Read the clues and clear the field.</p>
+
+                    <div class="game-card-footer">
+                        <span>LOGIC</span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- REACTION -->
+
+            <div class="game-card" onclick="openGame('reaction')">
+
+                <div class="game-card-top breakout-bg">
+                    <span class="game-number">12</span>
+                    <span class="game-icon">⚡</span>
+                </div>
+
+                <div class="game-card-body">
+                    <h3>Reaction Test</h3>
+                    <p>Measure your reflexes in milliseconds.</p>
+
+                    <div class="game-card-footer">
+                        <span>REFLEX</span>
+                        <button>PLAY →</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEADERBOARD CTA -->
+
+    <section class="leaderboard-cta">
+
+        <div>
+            <p class="section-label">COMPETE WORLDWIDE</p>
+
+            <h2>Think you can reach the top?</h2>
+
+            <p>
+                Compare your scores with players from around the world.
+            </p>
+        </div>
+
+        <button onclick="openLeaderboard()">
+            VIEW LEADERBOARD →
+        </button>
+
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/api.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/dashboard.js"></script>
+
+</body>
+</html>

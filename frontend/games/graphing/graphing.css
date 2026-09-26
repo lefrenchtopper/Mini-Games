@@ -1,0 +1,712 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(184,131,42,.08),
+            transparent 35%
+        ),
+        #f7f3ec;
+
+    color: #1c1a14;
+
+    font-family: Inter, Arial, sans-serif;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.graph-header {
+
+    height: 72px;
+
+    padding: 0 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: rgba(247,243,236,.96);
+
+    border-bottom: 1px solid #e2ddd4;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+.back-btn {
+
+    color: #6b6560;
+
+    text-decoration: none;
+
+    font-size: .72rem;
+
+    font-weight: 600;
+}
+
+.back-btn:hover {
+
+    color: #b8832a;
+}
+
+.graph-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.graph-icon {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: #1c1a14;
+
+    color: #d4a84b;
+
+    font-family: Georgia, serif;
+
+    font-size: 1.5rem;
+}
+
+.graph-title h1 {
+
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+
+    letter-spacing: .1em;
+}
+
+.graph-title p {
+
+    margin: 3px 0 0;
+
+    color: #8b847c;
+
+    font-size: .62rem;
+}
+
+.header-btn {
+
+    border: 1px solid #d6d0c6;
+
+    background: white;
+
+    padding: 8px 15px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: .65rem;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.graph-container {
+
+    width: min(1100px, 94%);
+
+    margin: auto;
+
+    padding: 40px 0 70px;
+}
+
+
+/* =========================
+   CONTROL
+========================= */
+
+.control-panel {
+
+    background: white;
+
+    border: 1px solid #e2ddd4;
+
+    border-radius: 8px;
+
+    padding: 25px;
+
+    margin-bottom: 15px;
+}
+
+.panel-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.panel-heading > span {
+
+    color: #b8832a;
+
+    font-family: Georgia, serif;
+
+    font-size: .8rem;
+}
+
+.panel-heading h2 {
+
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 1.05rem;
+}
+
+.panel-heading p {
+
+    margin: 3px 0 0;
+
+    color: #8b847c;
+
+    font-size: .62rem;
+}
+
+
+/* =========================
+   EXPRESSION
+========================= */
+
+.expression-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.fx-label {
+
+    font-family: Georgia, serif;
+
+    font-size: 1.2rem;
+
+    white-space: nowrap;
+}
+
+.expression-row input {
+
+    flex: 1;
+
+    height: 46px;
+
+    border: 1px solid #d6d0c6;
+
+    background: #faf9f6;
+
+    border-radius: 5px;
+
+    padding: 0 14px;
+
+    outline: none;
+
+    font-family: Consolas, monospace;
+
+    font-size: .9rem;
+
+    color: #1c1a14;
+}
+
+.expression-row input:focus {
+
+    border-color: #b8832a;
+
+    background: white;
+}
+
+.plot-btn {
+
+    height: 46px;
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #1c1a14;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: .68rem;
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+}
+
+.plot-btn:hover {
+
+    background: #3d4a2a;
+}
+
+
+/* =========================
+   EXAMPLES
+========================= */
+
+.examples {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    margin-top: 13px;
+}
+
+.examples span {
+
+    color: #8b847c;
+
+    font-size: .62rem;
+}
+
+.examples button {
+
+    border: 1px solid #ded8cf;
+
+    background: #f7f3ec;
+
+    padding: 6px 10px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-family: Consolas, monospace;
+
+    font-size: .6rem;
+}
+
+.examples button:hover {
+
+    background: #1c1a14;
+
+    color: white;
+}
+
+
+/* =========================
+   GRAPH CARD
+========================= */
+
+.graph-card {
+
+    background: white;
+
+    border: 1px solid #e2ddd4;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.graph-toolbar {
+
+    min-height: 54px;
+
+    padding: 10px 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid #e2ddd4;
+
+    background: #faf9f6;
+}
+
+.toolbar-left,
+.toolbar-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+.toolbar-left button {
+
+    border: 1px solid #d8d2c9;
+
+    background: white;
+
+    height: 32px;
+
+    min-width: 32px;
+
+    padding: 0 10px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: .65rem;
+
+    font-weight: 600;
+}
+
+.toolbar-left button:hover {
+
+    background: #1c1a14;
+
+    color: white;
+}
+
+.toolbar-left button:first-child,
+.toolbar-left button:nth-child(2) {
+
+    font-size: 1rem;
+}
+
+.toolbar-right label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    color: #6b6560;
+
+    font-size: .6rem;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   CANVAS
+========================= */
+
+.canvas-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 600px;
+
+    background: white;
+
+    overflow: hidden;
+}
+
+#graphCanvas {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    cursor: crosshair;
+}
+
+.coordinates {
+
+    position: absolute;
+
+    left: 12px;
+
+    bottom: 12px;
+
+    padding: 6px 9px;
+
+    border-radius: 4px;
+
+    background: rgba(28,26,20,.88);
+
+    color: white;
+
+    font-family: Consolas, monospace;
+
+    font-size: .6rem;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error-message {
+
+    min-height: 0;
+
+    color: #c0392b;
+
+    background: #fff5f4;
+
+    font-size: .65rem;
+
+    text-align: center;
+}
+
+.error-message:not(:empty) {
+
+    padding: 9px;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.math-info {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.info-item {
+
+    background: white;
+
+    border: 1px solid #e2ddd4;
+
+    border-radius: 6px;
+
+    padding: 14px 18px;
+}
+
+.info-item span {
+
+    display: block;
+
+    color: #8b847c;
+
+    font-size: .55rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: .1em;
+
+    margin-bottom: 5px;
+}
+
+.info-item strong {
+
+    font-family: Georgia, serif;
+
+    font-size: .9rem;
+}
+
+
+/* =========================
+   HELP
+========================= */
+
+.help-section {
+
+    margin-top: 35px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e2ddd4;
+}
+
+.help-section h2 {
+
+    margin: 0 0 18px;
+
+    font-family: Georgia, serif;
+
+    text-align: center;
+
+    font-size: 1.15rem;
+}
+
+.help-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.help-grid div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px;
+
+    background: white;
+
+    border: 1px solid #e2ddd4;
+
+    border-radius: 6px;
+}
+
+.help-grid strong {
+
+    color: #b8832a;
+
+    font-family: Georgia, serif;
+
+    font-size: 1.1rem;
+}
+
+.help-grid span {
+
+    color: #6b6560;
+
+    font-size: .6rem;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .graph-title p {
+
+        display: none;
+    }
+
+    .graph-title h1 {
+
+        font-size: .78rem;
+    }
+
+    .expression-row {
+
+        flex-wrap: wrap;
+    }
+
+    .expression-row input {
+
+        width: calc(100% - 55px);
+
+        flex: none;
+    }
+
+    .plot-btn {
+
+        width: 100%;
+    }
+
+    .canvas-wrapper {
+
+        height: 450px;
+    }
+
+    .math-info {
+
+        grid-template-columns: 1fr;
+    }
+
+    .help-grid {
+
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 1000;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+
+    color: #fff;
+    text-decoration: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-3px);
+}

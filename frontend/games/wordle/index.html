@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle | MiniHub</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="wordle.css">
+</head>
+
+<body>
+    <a href="../../index.html" class="back-btn">← MiniHub</a>
+
+    <header class="game-header">
+        <a href="../../pages/dashboard.html" class="back-btn">← Dashboard</a>
+
+        <div class="game-title">
+            <span class="title-icon">W</span>
+            <div>
+                <h1>WORDLE</h1>
+                <p>Guess the hidden word</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button id="newGameBtn" class="header-btn">New Game</button>
+        </div>
+    </header>
+
+    <main class="wordle-container">
+
+        <section class="game-info">
+            <div class="info-card">
+                <span class="info-label">Attempts</span>
+                <strong id="attemptCount">0 / 6</strong>
+            </div>
+
+            <div class="info-card">
+                <span class="info-label">Score</span>
+                <strong id="score">0</strong>
+            </div>
+
+            <div class="info-card">
+                <span class="info-label">Streak</span>
+                <strong id="streak">0</strong>
+            </div>
+        </section>
+
+        <section class="wordle-board-wrapper">
+            <div id="board" class="wordle-board"></div>
+
+            <div id="message" class="message"></div>
+        </section>
+
+        <section class="keyboard" id="keyboard">
+
+            <div class="keyboard-row">
+                <button data-key="Q">Q</button>
+                <button data-key="W">W</button>
+                <button data-key="E">E</button>
+                <button data-key="R">R</button>
+                <button data-key="T">T</button>
+                <button data-key="Y">Y</button>
+                <button data-key="U">U</button>
+                <button data-key="I">I</button>
+                <button data-key="O">O</button>
+                <button data-key="P">P</button>
+            </div>
+
+            <div class="keyboard-row">
+                <button data-key="A">A</button>
+                <button data-key="S">S</button>
+                <button data-key="D">D</button>
+                <button data-key="F">F</button>
+                <button data-key="G">G</button>
+                <button data-key="H">H</button>
+                <button data-key="J">J</button>
+                <button data-key="K">K</button>
+                <button data-key="L">L</button>
+            </div>
+
+            <div class="keyboard-row">
+                <button data-key="ENTER" class="wide-key">ENTER</button>
+                <button data-key="Z">Z</button>
+                <button data-key="X">X</button>
+                <button data-key="C">C</button>
+                <button data-key="V">V</button>
+                <button data-key="B">B</button>
+                <button data-key="N">N</button>
+                <button data-key="M">M</button>
+                <button data-key="BACKSPACE" class="wide-key">⌫</button>
+            </div>
+
+        </section>
+
+        <section class="instructions">
+            <h2>How to play</h2>
+
+            <div class="rules">
+                <div class="rule">
+                    <span class="rule-box correct"></span>
+                    <p>Correct letter and position</p>
+                </div>
+
+                <div class="rule">
+                    <span class="rule-box present"></span>
+                    <p>Correct letter, wrong position</p>
+                </div>
+
+                <div class="rule">
+                    <span class="rule-box absent"></span>
+                    <p>Letter isn't in the word</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="resultModal" class="modal hidden">
+        <div class="modal-card">
+
+            <div id="resultIcon" class="result-icon">🎉</div>
+
+            <h2 id="resultTitle">You Won!</h2>
+
+            <p id="resultText"></p>
+
+            <div class="result-score">
+                <span>Score</span>
+                <strong id="finalScore">0</strong>
+            </div>
+
+            <button id="playAgainBtn" class="play-again-btn">
+                Play Again
+            </button>
+
+            <a href="../../pages/dashboard.html" class="dashboard-link">
+                Return to Dashboard
+            </a>
+
+        </div>
+    </div>
+
+    <script src="../../js/api.js"></script>
+    <script src="wordle.js"></script>
+</body>
+</html>

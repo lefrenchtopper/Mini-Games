@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Graphing Calculator | MiniHub</title>
+
+    <link
+        rel="stylesheet"
+        href="../../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="graphing.css"
+    >
+
+</head>
+
+<body>
+    <a href="../../index.html" class="back-btn">← MiniHub</a>
+
+<header class="graph-header">
+
+    <a
+        href="../../pages/dashboard.html"
+        class="back-btn"
+    >
+        ← Dashboard
+    </a>
+
+    <div class="graph-title">
+
+        <div class="graph-icon">
+            ∿
+        </div>
+
+        <div>
+
+            <h1>GRAPHING CALCULATOR</h1>
+
+            <p>
+                Plot functions and explore mathematics
+            </p>
+
+        </div>
+
+    </div>
+
+    <button
+        id="resetBtn"
+        class="header-btn"
+    >
+        Reset
+    </button>
+
+</header>
+
+
+<main class="graph-container">
+
+
+    <!-- CONTROL PANEL -->
+
+    <section class="control-panel">
+
+        <div class="panel-heading">
+
+            <span>01</span>
+
+            <div>
+                <h2>Function</h2>
+                <p>Enter a function of x</p>
+            </div>
+
+        </div>
+
+
+        <div class="expression-row">
+
+            <span class="fx-label">
+                f(x) =
+            </span>
+
+            <input
+                id="expression"
+                type="text"
+                value="x^2"
+                autocomplete="off"
+                spellcheck="false"
+            >
+
+            <button
+                id="plotBtn"
+                class="plot-btn"
+            >
+                Plot
+            </button>
+
+        </div>
+
+
+        <div class="examples">
+
+            <span>Try:</span>
+
+            <button data-expression="x^2">
+                x²
+            </button>
+
+            <button data-expression="x^3">
+                x³
+            </button>
+
+            <button data-expression="sin(x)">
+                sin(x)
+            </button>
+
+            <button data-expression="cos(x)">
+                cos(x)
+            </button>
+
+            <button data-expression="sqrt(x)">
+                √x
+            </button>
+
+            <button data-expression="1/x">
+                1/x
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- GRAPH -->
+
+    <section class="graph-card">
+
+        <div class="graph-toolbar">
+
+            <div class="toolbar-left">
+
+                <button
+                    id="zoomIn"
+                    title="Zoom in"
+                >
+                    +
+                </button>
+
+                <button
+                    id="zoomOut"
+                    title="Zoom out"
+                >
+                    −
+                </button>
+
+                <button
+                    id="resetView"
+                >
+                    Reset View
+                </button>
+
+            </div>
+
+
+            <div class="toolbar-right">
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="gridToggle"
+                        checked
+                    >
+                    Grid
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="axisToggle"
+                        checked
+                    >
+                    Axes
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <div class="canvas-wrapper">
+
+            <canvas id="graphCanvas"></canvas>
+
+            <div
+                id="coordinates"
+                class="coordinates"
+            >
+                x: 0.00 &nbsp; y: 0.00
+            </div>
+
+        </div>
+
+
+        <div
+            id="errorMessage"
+            class="error-message"
+        ></div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <section class="math-info">
+
+        <div class="info-item">
+
+            <span>Function</span>
+
+            <strong id="functionDisplay">
+                f(x) = x²
+            </strong>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>X Range</span>
+
+            <strong id="xRange">
+                -10 → 10
+            </strong>
+
+        </div>
+
+        <div class="info-item">
+
+            <span>Y Range</span>
+
+            <strong id="yRange">
+                -10 → 10
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <section class="help-section">
+
+        <h2>How to use</h2>
+
+        <div class="help-grid">
+
+            <div>
+                <strong>1</strong>
+                <span>
+                    Enter your function using x.
+                </span>
+            </div>
+
+            <div>
+                <strong>2</strong>
+                <span>
+                    Click Plot or press Enter.
+                </span>
+            </div>
+
+            <div>
+                <strong>3</strong>
+                <span>
+                    Drag the graph to pan.
+                </span>
+            </div>
+
+            <div>
+                <strong>4</strong>
+                <span>
+                    Use + and − to zoom.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="graphing.js"></script>
+
+</body>
+</html>

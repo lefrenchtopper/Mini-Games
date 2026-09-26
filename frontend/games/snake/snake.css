@@ -1,0 +1,504 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(184, 131, 42, 0.08),
+            transparent 35%
+        ),
+        #11110f;
+
+    color: #f7f3ec;
+
+    font-family: Inter, Arial, sans-serif;
+}
+
+
+/* ==========================================
+   NAV
+========================================== */
+
+.game-nav {
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    background: rgba(17, 17, 15, 0.96);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 50;
+}
+
+.back-btn {
+    color: rgba(255,255,255,0.65);
+
+    text-decoration: none;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    color: #d4a84b;
+}
+
+.game-title {
+    font-family: Georgia, serif;
+
+    font-size: 0.85rem;
+
+    letter-spacing: 0.18em;
+
+    color: #d4a84b;
+}
+
+.nav-score {
+    font-size: 0.65rem;
+
+    letter-spacing: 0.1em;
+
+    color: rgba(255,255,255,0.4);
+}
+
+.nav-score span {
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   MAIN
+========================================== */
+
+.snake-container {
+    width: min(850px, 94%);
+
+    margin: auto;
+
+    padding: 45px 0 70px;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.game-header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+
+    font-size: 0.58rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.22em;
+
+    color: #d4a84b;
+}
+
+.game-header h1 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(2.4rem, 6vw, 4rem);
+
+    font-weight: 500;
+}
+
+.game-header h1 span {
+    color: #d4a84b;
+
+    font-style: italic;
+}
+
+.game-header p:last-child {
+    margin-top: 12px;
+
+    color: rgba(255,255,255,0.4);
+
+    font-size: 0.8rem;
+}
+
+
+/* ==========================================
+   SCORE
+========================================== */
+
+.score-panel {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.score-card {
+    min-width: 105px;
+
+    padding: 12px 20px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.025);
+
+    border: 1px solid rgba(255,255,255,0.09);
+}
+
+.score-card span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 0.5rem;
+
+    letter-spacing: 0.15em;
+
+    color: rgba(255,255,255,0.35);
+}
+
+.score-card strong {
+    font-family: Georgia, serif;
+
+    font-size: 1.5rem;
+
+    color: #d4a84b;
+}
+
+
+/* ==========================================
+   GAME
+========================================== */
+
+.game-wrapper {
+    display: flex;
+
+    justify-content: center;
+}
+
+.canvas-container {
+    width: min(600px, 100%);
+
+    aspect-ratio: 1 / 1;
+
+    position: relative;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    background: #0c0c0b;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.4);
+}
+
+canvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ==========================================
+   OVERLAY
+========================================== */
+
+.game-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(10,10,9,0.78);
+
+    backdrop-filter: blur(4px);
+
+    z-index: 5;
+}
+
+.game-overlay.hidden {
+    display: none;
+}
+
+.overlay-content {
+    text-align: center;
+
+    padding: 30px;
+}
+
+.overlay-icon {
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+.overlay-content h2 {
+    margin: 0 0 10px;
+
+    font-family: Georgia, serif;
+
+    font-size: 2rem;
+
+    color: #d4a84b;
+}
+
+.overlay-content p {
+    margin: 0 0 25px;
+
+    font-size: 0.72rem;
+
+    color: rgba(255,255,255,0.45);
+}
+
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.gold-button {
+    border: none;
+
+    padding: 13px 25px;
+
+    background: #b8832a;
+
+    color: white;
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.gold-button:hover {
+    background: #d4a84b;
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   MOBILE CONTROLS
+========================================== */
+
+.mobile-controls {
+    display: none;
+
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+.mobile-controls button {
+    width: 50px;
+    height: 45px;
+
+    margin: 3px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    background: rgba(255,255,255,0.04);
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+}
+
+.mobile-controls button:active {
+    background: #b8832a;
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    padding: 11px 18px;
+
+    border: 1px solid rgba(255,255,255,0.14);
+
+    background: transparent;
+
+    color: rgba(255,255,255,0.55);
+
+    text-decoration: none;
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.1em;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.control-btn:hover {
+    color: white;
+
+    border-color: #b8832a;
+}
+
+
+/* ==========================================
+   INSTRUCTIONS
+========================================== */
+
+.instructions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.instructions div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.instructions strong {
+    font-size: 0.52rem;
+
+    color: #d4a84b;
+
+    letter-spacing: 0.08em;
+}
+
+.instructions span {
+    font-size: 0.52rem;
+
+    color: rgba(255,255,255,0.3);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 650px) {
+
+    .game-title {
+        display: none;
+    }
+
+    .snake-container {
+        padding-top: 30px;
+    }
+
+    .score-panel {
+        gap: 6px;
+    }
+
+    .score-card {
+        min-width: 85px;
+
+        padding: 10px;
+    }
+
+    .mobile-controls {
+        display: block;
+    }
+
+    .instructions {
+        display: none;
+    }
+}
+
+.back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 1000;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+
+    color: #fff;
+    text-decoration: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-3px);
+}

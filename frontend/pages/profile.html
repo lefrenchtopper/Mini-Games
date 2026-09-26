@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MiniHub | Profile</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav>
+<a class="logo" href="../index.html"><span class="logo-icon">🎮</span><span><b>MINIHUB</b><small>ARCADE & MORE</small></span></a>
+<div class="nav-links"><a href="../index.html">Home</a><a href="leaderboard.html">Leaderboard</a><a href="profile.html">Profile</a></div>
+<div class="nav-auth"><a href="login.html" class="login-btn">Sign In</a><a href="signup.html" class="signup-btn">Sign Up</a></div>
+</nav>
+<main class="dashboard">
+<div class="section-label">PLAYER PROFILE</div>
+<h1>Your Profile</h1>
+<p style="color:#9298aa;margin:10px 0 35px">Your MiniHub progress and score history.</p>
+<div class="dashboard-grid">
+<div class="dash-card"><small>USERNAME</small><strong id="profileName">Guest</strong></div>
+<div class="dash-card"><small>BEST SCORE</small><strong id="profileBestScore">0</strong></div>
+<div class="dash-card"><small>GAMES PLAYED</small><strong id="profileGamesPlayed">0</strong></div>
+</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/api.js"></script>
+<script src="../js/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+	await API.ready();
+	const user = API.getCurrentUser();
+	const allScores = user ? await API.getScores() : [];
+	const scores = user
+		? allScores.filter(score => score.username === user.username)
+		: [];
+
+	document.getElementById("profileName").textContent = user?.username || "Guest";
+	document.getElementById("profileBestScore").textContent = scores.length
+		? Math.max(...scores.map(score => Number(score.score) || 0))
+		: "0";
+	document.getElementById("profileGamesPlayed").textContent = scores.length;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(184, 131, 42, 0.08),
+            transparent 35%
+        ),
+        #f7f3ec;
+
+    color: #1c1a14;
+    font-family: Inter, Arial, sans-serif;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.tool-header {
+    height: 72px;
+
+    padding: 0 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(247,243,236,.96);
+
+    border-bottom: 1px solid #e2ddd4;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.back-btn {
+    text-decoration: none;
+
+    color: #6b6560;
+
+    font-size: .72rem;
+    font-weight: 600;
+}
+
+.back-btn:hover {
+    color: #b8832a;
+}
+
+.tool-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tool-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: #1c1a14;
+    color: #d4a84b;
+
+    font-size: 1.35rem;
+}
+
+.tool-title h1 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+
+    letter-spacing: .12em;
+}
+
+.tool-title p {
+    margin: 3px 0 0;
+
+    color: #8b847c;
+
+    font-size: .62rem;
+}
+
+.header-btn {
+    border: 1px solid #d6d0c6;
+
+    background: white;
+
+    padding: 8px 15px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: .65rem;
+    font-weight: 600;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.qr-container {
+    width: min(1000px, 92%);
+
+    margin: auto;
+
+    padding: 55px 0 70px;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.qr-intro {
+    max-width: 620px;
+
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    color: #b8832a;
+
+    font-size: .58rem;
+
+    font-weight: 700;
+
+    letter-spacing: .2em;
+}
+
+.qr-intro h2 {
+    margin: 10px 0;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(2rem, 4vw, 3.2rem);
+
+    line-height: 1.05;
+}
+
+.qr-intro h2 em {
+    color: #b8832a;
+}
+
+.qr-intro p {
+    color: #6b6560;
+
+    max-width: 550px;
+
+    line-height: 1.8;
+
+    font-size: .82rem;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.qr-layout {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+.qr-card {
+    background: white;
+
+    border: 1px solid #e2ddd4;
+
+    border-radius: 8px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.04);
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.card-heading span {
+    color: #b8832a;
+
+    font-family: Georgia, serif;
+
+    font-size: .8rem;
+}
+
+.card-heading h3 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 1.1rem;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #6b6560;
+
+    font-size: .65rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+textarea,
+select {
+    width: 100%;
+
+    border: 1px solid #d9d3ca;
+
+    background: #faf9f6;
+
+    border-radius: 5px;
+
+    outline: none;
+
+    font-family: Inter, sans-serif;
+
+    font-size: .8rem;
+
+    transition: .2s;
+}
+
+textarea {
+    height: 150px;
+
+    resize: vertical;
+
+    padding: 13px;
+}
+
+select {
+    padding: 12px;
+
+    margin-bottom: 18px;
+}
+
+textarea:focus,
+select:focus {
+    border-color: #b8832a;
+
+    background: white;
+}
+
+.character-count {
+    text-align: right;
+
+    color: #99928a;
+
+    font-size: .58rem;
+
+    margin: 5px 0 20px;
+}
+
+
+/* =========================
+   QUICK
+========================= */
+
+.quick-options {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.quick-options button {
+    border: 1px solid #ddd7ce;
+
+    background: #f7f3ec;
+
+    padding: 7px 10px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: .6rem;
+
+    transition: .2s;
+}
+
+.quick-options button:hover {
+    background: #1c1a14;
+
+    color: white;
+}
+
+
+/* =========================
+   GENERATE
+========================= */
+
+.generate-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #1c1a14;
+
+    color: white;
+
+    padding: 13px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: .68rem;
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+    transition: .2s;
+}
+
+.generate-btn:hover {
+    background: #3d4a2a;
+}
+
+
+/* =========================
+   PREVIEW
+========================= */
+
+.output-card {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.qr-preview {
+    flex: 1;
+
+    min-height: 330px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #faf9f6,
+            #faf9f6 10px,
+            #f5f2ec 10px,
+            #f5f2ec 20px
+        );
+
+    border-radius: 6px;
+
+    border: 1px solid #e5e0d8;
+}
+
+#qrcode {
+    padding: 18px;
+
+    background: white;
+
+    border-radius: 5px;
+}
+
+.empty-qr {
+    text-align: center;
+
+    max-width: 230px;
+}
+
+.empty-icon {
+    font-size: 3rem;
+
+    color: #c9c3bb;
+
+    margin-bottom: 10px;
+}
+
+.empty-qr h3 {
+    font-family: Georgia, serif;
+
+    font-size: .95rem;
+}
+
+.empty-qr p {
+    color: #8b847c;
+
+    font-size: .65rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.qr-actions {
+    display: grid;
+
+    grid-template-columns: 1fr 100px;
+
+    gap: 8px;
+
+    margin-top: 15px;
+}
+
+.download-btn,
+.copy-btn {
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: .65rem;
+
+    font-weight: 700;
+}
+
+.download-btn {
+    background: #1c1a14;
+
+    color: white;
+}
+
+.copy-btn {
+    background: #e9e5dd;
+
+    color: #1c1a14;
+}
+
+.download-btn:disabled,
+.copy-btn:disabled {
+    opacity: .4;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   TIPS
+========================= */
+
+.qr-tips {
+    margin-top: 20px;
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    background: #1c1a14;
+
+    border-radius: 7px;
+}
+
+.qr-tips div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: white;
+}
+
+.qr-tips strong {
+    color: #d4a84b;
+
+    font-family: Georgia, serif;
+}
+
+.qr-tips span {
+    color: rgba(255,255,255,.55);
+
+    font-size: .62rem;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .qr-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .qr-tips {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-title p {
+        display: none;
+    }
+
+    .tool-title h1 {
+        font-size: .8rem;
+    }
+
+    .qr-card {
+        padding: 20px;
+    }
+}
+.back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 1000;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+
+    color: #fff;
+    text-decoration: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-3px);
+}

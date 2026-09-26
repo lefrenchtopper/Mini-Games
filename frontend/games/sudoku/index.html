@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sudoku | MiniHub</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="sudoku.css">
+</head>
+
+<body>
+    <a href="../../index.html" class="back-btn">← MiniHub</a>
+
+<header class="game-nav">
+
+    <a href="../../pages/dashboard.html" class="back-btn">
+        ← MiniHub
+    </a>
+
+    <div class="game-title">
+        SUDOKU
+    </div>
+
+    <div class="nav-score">
+        SCORE: <span id="topScore">0</span>
+    </div>
+
+</header>
+
+
+<main class="sudoku-container">
+
+    <section class="game-header">
+
+        <p class="eyebrow">
+            MINIHUB · PUZZLES
+        </p>
+
+        <h1>
+            Sudoku <span>Classic</span>
+        </h1>
+
+        <p>
+            Fill every row, column and box correctly.
+        </p>
+
+    </section>
+
+
+    <section class="game-info">
+
+        <div class="info-card">
+            <span>TIME</span>
+            <strong id="timer">00:00</strong>
+        </div>
+
+        <div class="info-card">
+            <span>MISTAKES</span>
+            <strong id="mistakes">0 / 3</strong>
+        </div>
+
+        <div class="info-card">
+            <span>SCORE</span>
+            <strong id="score">0</strong>
+        </div>
+
+    </section>
+
+
+    <section class="difficulty">
+
+        <button
+            class="difficulty-btn active"
+            data-difficulty="easy"
+            onclick="changeDifficulty('easy')">
+            EASY
+        </button>
+
+        <button
+            class="difficulty-btn"
+            data-difficulty="medium"
+            onclick="changeDifficulty('medium')">
+            MEDIUM
+        </button>
+
+        <button
+            class="difficulty-btn"
+            data-difficulty="hard"
+            onclick="changeDifficulty('hard')">
+            HARD
+        </button>
+
+    </section>
+
+
+    <section class="sudoku-wrapper">
+
+        <div id="sudokuBoard" class="sudoku-board">
+        </div>
+
+        <div id="gameOverlay" class="game-overlay">
+
+            <div class="overlay-content">
+
+                <div class="overlay-icon">
+                    9×9
+                </div>
+
+                <h2 id="overlayTitle">
+                    SUDOKU
+                </h2>
+
+                <p id="overlayMessage">
+                    Fill the grid without repeating numbers.
+                </p>
+
+                <button
+                    class="gold-button"
+                    id="startButton"
+                    onclick="startGame()">
+                    START GAME
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="number-pad">
+
+        <button onclick="selectNumber(1)">1</button>
+        <button onclick="selectNumber(2)">2</button>
+        <button onclick="selectNumber(3)">3</button>
+        <button onclick="selectNumber(4)">4</button>
+        <button onclick="selectNumber(5)">5</button>
+        <button onclick="selectNumber(6)">6</button>
+        <button onclick="selectNumber(7)">7</button>
+        <button onclick="selectNumber(8)">8</button>
+        <button onclick="selectNumber(9)">9</button>
+
+        <button
+            class="erase"
+            onclick="eraseCell()">
+            ×
+        </button>
+
+    </section>
+
+
+    <section class="controls">
+
+        <button
+            class="control-btn"
+            onclick="newGame()">
+            ↻ NEW PUZZLE
+        </button>
+
+        <button
+            class="control-btn"
+            onclick="giveHint()">
+            💡 HINT
+        </button>
+
+        <a
+            href="../../pages/dashboard.html"
+            class="control-btn secondary">
+            ← BACK TO ARCADE
+        </a>
+
+    </section>
+
+
+    <section class="instructions">
+
+        <div>
+            <strong>CLICK</strong>
+            <span>Select a cell</span>
+        </div>
+
+        <div>
+            <strong>1–9</strong>
+            <span>Enter number</span>
+        </div>
+
+        <div>
+            <strong>BACKSPACE</strong>
+            <span>Erase</span>
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="../../js/api.js"></script>
+<script src="sudoku.js"></script>
+
+</body>
+</html>

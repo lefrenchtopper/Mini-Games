@@ -93,6 +93,33 @@ function accessToken() {
     return null;
 }
 
+function normalizeLeaderboard(rows, selectedGame = null) {
+    const bestByPlayerGame = new Map();
+    rows.forEach(row => {
+        const normalized = {
+            username: row.username || "Unknown",
+            game: row.game || selectedGame,
+            score: Number(row.score),
+            playedAt: row.playedAt || row.played_at || null
+        };
+        if (!Number.isFinite(normalized.score) || !normalized.game) return;
+
+        const key = `${normalized.username}:${normalized.game}`;
+        const existing = bestByPlayerGame.get(key);
+        const isBetter = LOWER_IS_BETTER.has(normalized.game)
+            ? normalized.score < Number(existing?.score ?? Infinity)
+            : normalized.score > Number(existing?.score ?? -Infinity);
+        if (!existing || isBetter) bestByPlayerGame.set(key, normalized);
+    });
+
+    return [...bestByPlayerGame.values()].sort((left, right) => {
+        if (left.game === right.game && LOWER_IS_BETTER.has(left.game)) {
+            return left.score - right.score;
+        }
+        return right.score - left.score;
+    });
+}
+
 const API = {
     ready() {
         return authInitialization;
@@ -159,34 +186,13 @@ const API = {
                 : Promise.all(GAMES.map(game => API.request(`/leaderboard/${game.id}`)))
                     .then(results => results.flatMap(result => result?.leaderboard || []));
 
-            return remote.then(rows => rows.map(row => ({
-                username: row.username,
-                game: row.game || gameId,
-                score: Number(row.score),
-                playedAt: row.played_at
-            })));
+            return remote.then(rows => normalizeLeaderboard(rows, gameId));
         }
 
-        const scores = [...DEMO_SCORES, ...readScores()]
-            .filter(score => !gameId || score.game === gameId)
-            .sort((left, right) => Number(right.score) - Number(left.score));
-
-        const bestByPlayer = new Map();
-        scores.forEach(score => {
-            const key = `${score.username}:${score.game}`;
-            const existing = bestByPlayer.get(key);
-            const isBetter = LOWER_IS_BETTER.has(score.game)
-                ? Number(score.score) < Number(existing?.score ?? Infinity)
-                : Number(score.score) > Number(existing?.score ?? -Infinity);
-            if (!existing || isBetter) {
-                bestByPlayer.set(key, score);
-            }
-        });
-
-        return [...bestByPlayer.values()].sort(
-            (left, right) => LOWER_IS_BETTER.has(left.game)
-                ? Number(left.score) - Number(right.score)
-                : Number(right.score) - Number(left.score)
+        return normalizeLeaderboard(
+            [...DEMO_SCORES, ...readScores()]
+                .filter(score => !gameId || score.game === gameId),
+            gameId
         );
     },
 

@@ -125,6 +125,7 @@ ALLOWED_GAMES = {
     "minesweeper",
     "reaction"
 }
+LOWER_IS_BETTER_GAMES = {"sudoku", "minesweeper", "reaction"}
 
 
 # ============================================================
@@ -463,7 +464,7 @@ def leaderboard(game: str):
                 "score, played_at, profiles(username)"
             )
             .eq("game", game)
-            .order("score", desc=True)
+            .order("score", desc=game not in LOWER_IS_BETTER_GAMES)
             .limit(100)
             .execute()
         )

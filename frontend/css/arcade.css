@@ -53,6 +53,8 @@ body.auth-shell::before {
     backdrop-filter: blur(22px) saturate(145%);
     -webkit-backdrop-filter: blur(22px) saturate(145%);
     box-shadow: 0 12px 35px rgba(0, 0, 0, .16);
+    width: 100%;
+    flex: 0 0 auto;
 }
 
 .mh-brand {
@@ -435,7 +437,22 @@ body.auth-shell::before {
 .game-shell .game-nav,
 .game-shell .game-header,
 .game-shell header:not(#minihub-global-nav) { color: var(--arcade-text); }
-.game-shell main { width: min(1180px, 100%); margin-left: auto; margin-right: auto; }
+body.game-shell {
+    display: block;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.game-shell > a.back-btn { display: none; }
+.game-shell > main {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: clamp(18px, 2.5vw, 30px);
+    scroll-margin-top: 96px;
+}
 .game-shell .game-container,
 .game-shell .board-wrap,
 .game-shell .sudoku-wrapper,

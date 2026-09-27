@@ -5,13 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>MiniHub | Profile</title>
 <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/arcade.css">
 </head>
-<body>
-<nav>
-<a class="logo" href="../index.html"><span class="logo-icon">🎮</span><span><b>MINIHUB</b><small>ARCADE & MORE</small></span></a>
-<div class="nav-links"><a href="../index.html">Home</a><a href="leaderboard.html">Leaderboard</a><a href="profile.html">Profile</a></div>
-<div class="nav-auth"><a href="login.html" class="login-btn">Sign In</a><a href="signup.html" class="signup-btn">Sign Up</a></div>
-</nav>
+<body class="minihub-shell" data-minihub-shell>
 <main class="dashboard">
 <div class="section-label">PLAYER PROFILE</div>
 <h1>Your Profile</h1>
@@ -21,6 +17,14 @@
 <div class="dash-card"><small>BEST SCORE</small><strong id="profileBestScore">0</strong></div>
 <div class="dash-card"><small>GAMES PLAYED</small><strong id="profileGamesPlayed">0</strong></div>
 </div>
+<section class="profile-section">
+<div class="section-heading"><div><p class="section-label">MILESTONES</p><h2>Achievements</h2></div></div>
+<div class="achievement-grid" id="profileAchievements"></div>
+</section>
+<section class="profile-section">
+<div class="section-heading"><div><p class="section-label">RECENT RUNS</p><h2>Score history</h2></div></div>
+<div class="profile-score-list" id="profileRecentScores" aria-live="polite"></div>
+</section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../js/api.js"></script>
@@ -33,12 +37,36 @@ document.addEventListener("DOMContentLoaded", async () => {
 	const scores = user
 		? allScores.filter(score => score.username === user.username)
 		: [];
+	const gamesPlayed = scores.length;
+	const gamesDiscovered = new Set(scores.map(score => score.game)).size;
+	const achievements = [
+		{ icon: "◈", name: "First Run", detail: "Submit your first score", earned: gamesPlayed > 0 },
+		{ icon: "✦", name: "Arcade Explorer", detail: "Play 5 different games", earned: gamesDiscovered >= 5 },
+		{ icon: "⚡", name: "On a Roll", detail: "Finish 10 runs", earned: gamesPlayed >= 10 }
+	];
 
 	document.getElementById("profileName").textContent = user?.username || "Guest";
 	document.getElementById("profileBestScore").textContent = scores.length
 		? Math.max(...scores.map(score => Number(score.score) || 0))
 		: "0";
-	document.getElementById("profileGamesPlayed").textContent = scores.length;
+	document.getElementById("profileGamesPlayed").textContent = gamesPlayed;
+	document.getElementById("profileAchievements").innerHTML = achievements.map(item => `
+		<article class="achievement ${item.earned ? "earned" : "locked"}">
+			<span class="achievement-icon" aria-hidden="true">${item.icon}</span>
+			<div><strong>${item.name}</strong><span>${item.detail}</span></div>
+			<b>${item.earned ? "UNLOCKED" : "LOCKED"}</b>
+		</article>
+	`).join("");
+	const recent = [...scores].sort((left, right) => new Date(right.playedAt) - new Date(left.playedAt)).slice(0, 8);
+	const recentContainer = document.getElementById("profileRecentScores");
+	if (!recent.length) {
+		recentContainer.innerHTML = '<p class="profile-empty">Your completed runs will appear here.</p>';
+	} else {
+		recentContainer.innerHTML = recent.map(score => {
+			const game = API.getGames().find(item => item.id === score.game);
+			return `<article class="profile-score-row"><span>${game?.icon || "◈"}</span><strong>${game?.name || score.game}</strong><time>${new Date(score.playedAt).toLocaleDateString()}</time><b>${Number(score.score).toLocaleString()}</b></article>`;
+		}).join("");
+	}
 });
 </script>
 </body>

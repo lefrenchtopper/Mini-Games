@@ -1,4 +1,25 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Reaction | MiniHub</title><link rel="stylesheet" href="../../css/style.css"><link rel="stylesheet" href="reaction.css"></head>
-<body><header class="game-nav"><a class="back-btn" href="../../index.html">&larr; MiniHub</a><strong>REACTION</strong><span>BEST <b id="topBest">-</b></span></header><main class="game-page"><section class="game-header"><p class="eyebrow">REFLEX · TIMING · FOCUS</p><h1>Reaction Test</h1><p>Wait for green, then move before your brain catches up.</p></section><section id="arena" class="arena idle" role="button" tabindex="0" aria-label="Reaction test area"><div class="arena-mark" id="arenaMark">READY?</div><p id="message">Press start, then wait for the color to change.</p></section><section class="stats"><div><span>LAST</span><strong id="lastTime">-</strong></div><div><span>BEST</span><strong id="bestTime">-</strong></div><div><span>ROUNDS</span><strong id="rounds">0</strong></div></section><div class="controls"><button id="startButton" class="control-btn">START ROUND</button><a class="control-btn secondary" href="../../pages/dashboard.html">BACK TO ARCADE</a></div><p class="hint">Five rounds make a set. Click the arena as soon as it turns green.</p></main><script src="../../js/api.js"></script><script src="reaction.js"></script></body></html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reaction | MiniHub</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="reaction.css">
+<link rel="stylesheet" href="../../css/arcade.css">
+</head>
+<body class="minihub-shell game-shell" data-minihub-shell>
+<header class="game-nav"><a class="back-btn" href="../../index.html">&larr; MiniHub</a><strong>REACTION</strong><span>BEST <b id="topBest">-</b></span></header>
+<main class="game-page">
+<section class="game-header"><p class="eyebrow">REFLEX · TIMING · FOCUS</p><h1>Reaction Test</h1><p>Wait for green, then move before your brain catches up.</p></section>
+<section id="arena" class="arena idle" role="button" tabindex="0" aria-label="Reaction test area"><div class="arena-mark" id="arenaMark">READY?</div><p id="message">Press start, then wait for the color to change.</p></section>
+<section class="stats"><div><span>LAST</span><strong id="lastTime">-</strong></div><div><span>BEST</span><strong id="bestTime">-</strong></div><div><span>ROUNDS</span><strong id="rounds">0</strong></div></section>
+<div class="controls"><button id="startButton" class="control-btn">START ROUND</button><a class="control-btn secondary" href="../../pages/dashboard.html">BACK TO ARCADE</a></div>
+<p class="hint">Five rounds make a set. Click the arena as soon as it turns green.</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../js/api.js"></script>
+<script src="../../js/app.js"></script>
+<script src="reaction.js"></script>
+</body>
+</html>

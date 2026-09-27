@@ -7,26 +7,10 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/arcade.css">
 </head>
 
-<body>
-
-<nav class="top-nav">
-    <div class="nav-brand" onclick="goHome()">
-        <div class="brand-icon">M</div>
-        <div>
-            <div class="brand-name">MINIHUB</div>
-            <div class="brand-sub">ARCADE & TOOLS</div>
-        </div>
-    </div>
-
-    <div class="nav-links">
-        <a href="dashboard.html" class="active">Dashboard</a>
-        <a href="leaderboard.html">Leaderboard</a>
-        <a href="profile.html">Profile</a>
-        <button onclick="logout()" class="logout-btn">Logout</button>
-    </div>
-</nav>
+<body class="minihub-shell" data-minihub-shell>
 
 <main class="dashboard">
 
@@ -92,7 +76,7 @@
         <div class="stat-card">
             <div class="stat-icon">⭐</div>
             <div>
-                <div class="stat-number" id="gamesUnlocked">9</div>
+                <div class="stat-number" id="gamesDiscovered">12</div>
                 <div class="stat-label">Games Available</div>
             </div>
         </div>

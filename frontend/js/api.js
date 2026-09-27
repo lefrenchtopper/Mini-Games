@@ -1,6 +1,6 @@
 const SUPABASE_URL = "https://lpqbpzlubzufolbpbmri.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_q-bdP_zb4236QdxVjcVz_w_B1UDmglQ";
-const API_BASE_URL = window.MINIHUB_API_URL || "http://127.0.0.1:8000";
+const API_BASE_URL = window.MINIHUB_API_URL || "https://mini-gameshub.onrender.com";
 const SCORE_STORAGE_KEY = "minihub_scores";
 const LOWER_IS_BETTER = new Set(["sudoku", "minesweeper", "reaction"]);
 

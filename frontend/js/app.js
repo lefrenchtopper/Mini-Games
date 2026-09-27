@@ -41,7 +41,7 @@ const MiniHub = {
     },
 
     game(name) {
-        window.location.href = `../games/${name}/index.html`;
+        window.location.href = `${appRootPath()}games/${encodeURIComponent(name)}/`;
     }
 };
 

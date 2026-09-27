@@ -297,7 +297,8 @@ body.auth-shell::before {
 .minihub-shell .game-card-footer { color: var(--arcade-muted); }
 .minihub-shell .game-card-footer { border-color: var(--arcade-line); }
 .minihub-shell .game-card-footer strong { color: var(--arcade-lime); }
-.minihub-shell .game-card-footer button { border-radius: 8px; background: rgba(100, 230, 220, .12); color: var(--arcade-cyan); }
+.minihub-shell .game-card-footer button,
+.minihub-shell .game-card-action { display: inline-block; padding: 8px 13px; border-radius: 8px; background: rgba(100, 230, 220, .12); color: var(--arcade-cyan); font-size: 10px; font-weight: 700; }
 .minihub-shell .leaderboard-cta {
     border: 1px solid var(--arcade-line);
     border-radius: 18px;
